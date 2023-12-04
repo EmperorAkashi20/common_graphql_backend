@@ -1,0 +1,8 @@
+type Admin {
+  userName: String
+  profilePicture: String
+  permissionOne: String
+  permissionTwo: String
+  permissionThree: String
+  role: String
+}

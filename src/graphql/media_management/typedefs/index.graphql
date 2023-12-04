@@ -1,0 +1,17 @@
+type Query {
+  testQuery: String
+}
+
+type Mutation {
+  generateSignedUrl(
+    entityType: String!
+    entityId: String
+    fileExtension: String!
+    mediaType: String!
+    mediaSize: String!
+    thumbnailExtension: String
+    thumbnailSize: String
+  ): generateSignedUrlResponse
+  getCDNSignedUrl(mediaId: String!): getCDNSignedUrlResponse
+  markMedia(mediaId: String!, mediaStatus: String!): markMediaResponse
+}

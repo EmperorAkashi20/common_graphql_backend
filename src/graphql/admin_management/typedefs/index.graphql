@@ -1,0 +1,48 @@
+scalar Date
+scalar PhoneNumber
+scalar Email
+
+type Query {
+  getAllSubAdmins(limit: Int, next: ID): getAllSubAdminsResponse
+  getAdminProfile: getAdminProfileResponse
+}
+
+type SubAdminConnection {
+  edges: [Admin]
+  pageInfo: pageInfo
+}
+
+type pageInfo {
+  endCursor: ID
+  hasMore: Boolean
+}
+
+type Mutation {
+  testMut: String
+  createAdmin(
+    userName: String!
+    email: Email!
+    password: String!
+    profilePicture: String!
+  ): createAdminResponse
+  adminLogin(userName: String!, password: String!): adminLoginResponse
+  registerSubAdmin(
+    userName: String!
+    email: Email
+    password: String!
+    profilePicture: String!
+    permissionOne: Boolean!
+    permissionTwo: Boolean!
+    permissionThree: Boolean!
+  ): createAdminResponse
+  updateSubAdmin(
+    subadminId: ID!
+    userName: String
+    permissionOne: Boolean
+    permissionTwo: Boolean
+    permissionThree: Boolean
+    profilePicture: String
+  ): updateSubAdminResponse
+  updatePassword(newPassword: String!, subAdminId: ID!): updateSubAdminResponse
+  deleteSubAdmin(subAdminId: ID!): deleteSubAdminResponse
+}

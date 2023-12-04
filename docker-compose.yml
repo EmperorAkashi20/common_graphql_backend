@@ -1,0 +1,8 @@
+# docker-compose.yml
+version: '3'
+services:
+  hello-jyotishi-backend:
+    build:
+      context: .
+    ports:
+    - "3100:3100"

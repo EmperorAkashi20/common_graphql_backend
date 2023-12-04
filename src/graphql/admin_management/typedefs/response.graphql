@@ -1,0 +1,47 @@
+type createAdminResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  userID: ID
+}
+
+type adminLoginResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  accessToken: String
+  userID: ID
+}
+
+type updateSubAdminResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  userID: ID
+}
+
+type deleteSubAdminResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+}
+
+type getAllSubAdminsResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  data: SubAdminConnection
+}
+
+type getAdminProfileResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  admin: Admin
+}

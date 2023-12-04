@@ -1,0 +1,108 @@
+type verifyOTPResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  otpVerified: Boolean!
+}
+
+type registerUserResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  otpSent: Boolean!
+}
+
+type userDetailsResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  accessToken: String
+  refreshToken: String
+  userID: ID
+}
+
+type sendOtpResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  otpSent: Boolean!
+}
+
+type forgotPasswordResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  otpSent: Boolean!
+}
+
+type resetForgotPasswordResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+}
+
+type resetPasswordResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+}
+
+type loginUserResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  accessToken: String
+  refreshToken: String
+  userID: ID
+}
+
+type refreshAccessTokenResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  accessToken: String
+  refreshToken: String
+  userID: ID
+}
+
+type createAdminResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  userID: ID
+}
+
+type adminLoginResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  accessToken: String
+  refreshToken: String
+  userID: ID
+}
+
+type updateSubAdminResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  userID: ID
+}
+
+type deleteSubAdminResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+}

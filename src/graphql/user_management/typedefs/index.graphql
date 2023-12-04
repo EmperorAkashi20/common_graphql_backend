@@ -1,0 +1,39 @@
+scalar Date
+scalar PhoneNumber
+scalar Email
+
+type Query {
+  test: String
+  adminTest: String
+}
+
+type Mutation {
+  registerUser(
+    email: Email!
+    password: String!
+    phoneNumber: PhoneNumber!
+  ): registerUserResponse
+  userDetails(
+    name: String!
+    dateOfBirth: Date!
+    timeOfBirth: Date!
+    phoneNumber: PhoneNumber!
+    gender: String!
+  ): userDetailsResponse
+  loginUser(email: Email!, password: String!): loginUserResponse
+  loginUserWithOtp(phoneNumber: PhoneNumber!, otp: String!): loginUserResponse
+  forgotPassword(email: Email, phoneNumber: PhoneNumber): forgotPasswordResponse
+  resetPassword(
+    password: String!
+    newPassword: String!
+    confirmPassword: String!
+  ): resetPasswordResponse
+  resetForgotPassword(
+    newPassword: String!
+    confirmPassword: String!
+    phoneNumber: PhoneNumber!
+  ): resetForgotPasswordResponse
+  verifyOtp(phoneNumber: PhoneNumber!, otp: String!): verifyOTPResponse
+  sendOtp(phoneNumber: PhoneNumber!): sendOtpResponse
+  refreshAccessToken(refreshToken: String!): refreshAccessTokenResponse
+}

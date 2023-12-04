@@ -1,0 +1,30 @@
+type generateSignedUrlResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  mediaId: String
+  userId: String
+  entityType: String
+  entityId: String
+  signedUrl: String
+  thumbnailSignedUrl: String
+  thumbnailImageMediaId: ID
+}
+
+type getCDNSignedUrlResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  signedUrl: String
+}
+
+type markMediaResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String
+  mediaId: String
+  mediaStatus: String
+}
