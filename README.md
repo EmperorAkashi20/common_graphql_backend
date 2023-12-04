@@ -1,6 +1,6 @@
-# hello_jyotishi_node_app
+# common_node_app
 
-Hello Jyotishi Backend with Node.js and Express. This app uses Node.js with Express for the backend, MongoDB for the database, and GraphQL for the APIs.
+Common Backend with Node.js and Express. This app uses Node.js with Express for the backend, MongoDB for the database, and GraphQL for the APIs.
 
 ## Getting Started
 
