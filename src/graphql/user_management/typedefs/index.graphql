@@ -1,28 +1,33 @@
 scalar Date
-scalar PhoneNumber
-scalar Email
 
 type Query {
   test: String
   adminTest: String
+  getUserProfile: getUserProfileResponse
 }
 
 type Mutation {
   registerUser(
-    email: Email!
+    email: String!
     password: String!
-    phoneNumber: PhoneNumber!
+    phoneNumber: String!
   ): registerUserResponse
+  verifyRegisteredUser(
+    email: String!
+    password: String!
+    phoneNumber: String!
+    otp: String
+  ): verifyRegisteredUserResponse
   userDetails(
     name: String!
     dateOfBirth: Date!
     timeOfBirth: Date!
-    phoneNumber: PhoneNumber!
+    phoneNumber: String!
     gender: String!
   ): userDetailsResponse
-  loginUser(email: Email!, password: String!): loginUserResponse
-  loginUserWithOtp(phoneNumber: PhoneNumber!, otp: String!): loginUserResponse
-  forgotPassword(email: Email, phoneNumber: PhoneNumber): forgotPasswordResponse
+  loginUser(email: String!, password: String!): loginUserResponse
+  loginUserWithOtp(phoneNumber: String!, otp: String!): loginUserResponse
+  forgotPassword(email: String, phoneNumber: String): forgotPasswordResponse
   resetPassword(
     password: String!
     newPassword: String!
@@ -31,9 +36,18 @@ type Mutation {
   resetForgotPassword(
     newPassword: String!
     confirmPassword: String!
-    phoneNumber: PhoneNumber!
+    phoneNumber: String!
   ): resetForgotPasswordResponse
-  verifyOtp(phoneNumber: PhoneNumber!, otp: String!): verifyOTPResponse
-  sendOtp(phoneNumber: PhoneNumber!): sendOtpResponse
+  verifyOtp(phoneNumber: String!, otp: String!): verifyOTPResponse
+  sendOtp(phoneNumber: String!): sendOtpResponse
   refreshAccessToken(refreshToken: String!): refreshAccessTokenResponse
+  updateProfile(
+    name: String
+    email: String
+    phoneNumber: String
+    gender: String
+    dateOfBirth: Date
+    timeOfBirth: String
+  ): updateUserDataResponse
+  deleteUserAccount: deleteUserAccountResponse
 }

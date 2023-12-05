@@ -6,6 +6,7 @@ import {
   userManagementServer,
   mediaManagementServer,
   adminManagementServer,
+  shopManagementServer,
 } from "./graphql/index.js";
 import { expressMiddleware as apolloMiddleware } from "@apollo/server/express4";
 
@@ -28,7 +29,7 @@ const start = async () => {
     await userManagementServer.start();
     await mediaManagementServer.start();
     await adminManagementServer.start();
-
+    await shopManagementServer.start();
     app.use(
       "/userManagement",
       apolloMiddleware(userManagementServer, { context: getContext })
@@ -41,6 +42,11 @@ const start = async () => {
     app.use(
       "/adminManagement",
       apolloMiddleware(adminManagementServer, { context: getContext })
+    );
+
+    app.use(
+      "/shopManagement",
+      apolloMiddleware(shopManagementServer, { context: getContext })
     );
   } catch (err) {
     logger.error(err);

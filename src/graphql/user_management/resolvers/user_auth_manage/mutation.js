@@ -36,29 +36,24 @@ const authMutation = {
 
     let user = await User.findOne({ phoneNumber });
 
-    if (user) {
+    if (user && user.isMobileVerified) {
       return {
         ...errorResponse,
-        message: "Phone number associated with another account",
+        message:
+          "Phone number associated with another account please filled the details",
         otpSent: false,
       };
     }
 
     user = await User.findOne({ email });
-    if (user) {
+    if (user && user.isMobileVerified) {
       return {
         ...errorResponse,
-        message: "Email associated with another account",
+        message:
+          "Email associated with another account please filled the details",
         otpSent: false,
       };
     }
-
-    user = await User.create({
-      email,
-      password: await bcrypt.hash(password, 12),
-      phoneNumber: phoneNumber,
-      name: " ",
-    });
 
     sendOtp(phoneNumber);
     return {
@@ -67,6 +62,35 @@ const authMutation = {
       otpSent: true,
     };
   }, service),
+  verifyRegisteredUser: catchAsync(
+    async (_root, { email, password, phoneNumber, otp }) => {
+      const errorResponse = new ResponseError(true, 400, "user-not-created");
+      const successResponse = new ResponseError(false, 200);
+
+      // Validate the OTP
+      if (await verifyOtp(phoneNumber, otp)) {
+        const user = await User.create({
+          email,
+          phoneNumber,
+          password: await bcrypt.hash(password, 12),
+          name: " ",
+          isMobileVerified: true,
+        });
+
+        return {
+          ...successResponse,
+          message: "User registation successfull",
+          userId: user._id,
+        };
+      } else {
+        return {
+          ...errorResponse,
+          message: "Otp not verified",
+        };
+      }
+    },
+    service
+  ),
   userDetails: catchAsync(
     async (_root, { name, dateOfBirth, timeOfBirth, gender, phoneNumber }) => {
       const errorResponse = new ResponseError(true, 400, "token-not-generated");
